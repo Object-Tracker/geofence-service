@@ -41,14 +41,10 @@ public class FirebasePushService {
                         .build();
                 FirebaseApp.initializeApp(options);
                 initialized = true;
-                log.info("Firebase initialized successfully");
             } else {
                 initialized = true;
-                log.info("Firebase already initialized");
             }
         } catch (IOException e) {
-            log.warn("Firebase config not found at {}. Push notifications disabled. " +
-                    "To enable, add your Firebase service account JSON file.", firebaseConfigPath);
             initialized = false;
         }
     }
@@ -56,7 +52,6 @@ public class FirebasePushService {
     @Async
     public void sendPushNotification(Long userId, String title, String body, String type, Long objectId) {
         if (!initialized) {
-            log.debug("Firebase not initialized, skipping push notification");
             return;
         }
 

@@ -16,7 +16,6 @@ public class User {
 
     private String username;
 
-    // Firebase Cloud Messaging token
     @Column(length = 500)
     private String fcmToken;
 }
